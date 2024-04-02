@@ -6,12 +6,13 @@ const userSchema=require("../models/userSchema")
 
 module.exports={
 
+
 userRegister:async(req,res)=>{
 
     console.log("first")
 
   const {value,error}=req.body;
-
+ 
     console.log(value,"value")
 
         if(error){
@@ -22,11 +23,12 @@ userRegister:async(req,res)=>{
         }
 
     try {
-        const { name, email, password } = value;
+        const { name, email, password } = value
+        const hashpassword=await bcrypt.hash(password,10)
         await userSchema.create({
-            name,
-            email,
-            password,
+            name:name,
+            email:email,
+            password:hashpassword,
         });
 
         res.status(201).json({
@@ -116,6 +118,21 @@ EditNotes:async(req,res)=>{
         
     }
 },
+
+DisplayNotes:async(req,res)=>{
+    const notes=await notesSchema.findById()
+    if(!notes){
+        return res.status(404).json({
+            status:"error",
+            message:"Notes not found"
+        })
+    }
+    return res.status(200).json({
+        status:"success",
+        message:"notes Fetched Successfully",
+        data:notes
+    })
+}
 
 
 

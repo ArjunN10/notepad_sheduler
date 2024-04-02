@@ -16,6 +16,7 @@ router
 
 //<------------ CRUD on note  -------------->
 .post('/api/notes/createnote',TrycatchMiddleware(userController.CreateNotes))
+.get('/api/notes/:id',TrycatchMiddleware(userController.DisplayNotes))
 .delete('/api/notes/:id',TrycatchMiddleware(userController.DeleteNotes))
 .post('/api/notes/:id',TrycatchMiddleware(userController.EditNotes))
 

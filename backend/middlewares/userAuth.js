@@ -1,32 +1,33 @@
-const jwt  = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
-
-function verifyToken(req,res,next){
+function verifyToken(req, res, next) {
     try {
-    const token = req.headers['authorization']
-    if(token){
-        return res.status(200).json({
-            status:"success",
-            message:"user auth success"
-        })
-    } 
-    jwt.verify(token,(err)=>{
-        if(!err){
-            response.status(403).json({error:"error"})
-        }else{
-            const decoded = jwt.verify(token,process.env.USER_ACCESS_TOKEN_SECRET);
-            req.user = decoded
+        const token = req.headers['authorization'];
+        if (!token) {
+            return res.status(401).json({
+                error: 'error',
+                message: 'Unauthorized: Token not provided'
+            });
         }
-        next()
-    })
-        
+
+        jwt.verify(token, process.env.USER_ACCESS_TOKEN_SECRET, (err, decoded) => {
+            if (err) {
+                return res.status(403).json({
+                    error: 'error',
+                    message: 'Forbidden: Invalid token'
+                });
+            }
+            
+            req.user = decoded;
+            next(); 
+        });
     } catch (error) {
-      res.status(401).json({
-        error:'error',
-        message:"Unauthorized"
-      })  
+        console.error(error);
+        res.status(500).json({
+            error: 'error',
+            message: 'Internal Server Error'
+        });
     }
 }
-    
 
-module.exports = verifyToken
+module.exports = verifyToken;
