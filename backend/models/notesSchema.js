@@ -9,10 +9,6 @@ const notesSchema=new mongoose.Schema({
     notebody:{
         type:String,
         required:true
-    },
-    notecolor:{
-        type:String,
-        required:true
     }
    
 })

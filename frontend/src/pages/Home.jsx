@@ -1,12 +1,26 @@
-import React from 'react'
-import { NoteCard } from '../components/NoteCard'
+import Navbar from "../components/navbar/Navbar"
+import SideBar from "../components/sidebar/SideBar"
 
 export const Home = () => {
-  return (
-    <div className=" dark:bg-gray-900 ">
-        <div class="flex flex-col items-center justify-top  px-6 py-8 mx-auto md:h-screen lg:py-0">
-    <NoteCard/>
+  return (<div className="flex h-screen flex-col gap-20">
+    <div className=" bg-sky-300  w-full">
+      <Navbar/>
     </div>
-    </div>
+
+      <div className="flex flex-col-6  h-[450px]  w-full  bg-slate-600">
+        <SideBar/>
+        <div className="w-full flex flex-col-6 p-3  gap-4 flex-wrap h-full overflow-y-scroll  bg-black">
+          <div className="h-52 w-52 bg-white"></div>
+          <div className="h-52 w-52 bg-white"></div>
+          <div className="h-52 w-52 bg-white"></div>
+          <div className="h-52 w-52 bg-white"></div>
+          <div className="h-52 w-52 bg-white"></div>
+          <div className="h-52 w-52 bg-white"></div>
+          <div className="h-52 w-52 bg-white"></div>
+          <div className="h-52 w-52 bg-white"></div>
+          <div className="h-52 w-52 bg-white"></div>
+        </div>
+      </div>
+  </div>
   )
 }

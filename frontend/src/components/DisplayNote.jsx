@@ -5,6 +5,10 @@ import React from 'react'
 
 export const DisplayNote = () => {
 
+  const displayhandler=async(e)=>{
+  
+  }
+
 
   return (
     <div>
@@ -13,7 +17,7 @@ export const DisplayNote = () => {
       
         <div className="mt-3">
                  
-              <label></label>
+              
                 </div>
         <div className="mt-4">
                  
@@ -27,14 +31,14 @@ export const DisplayNote = () => {
                  />
                </div>
                <div>
-               <button
+               {/* <button
                   type="submit"
                   className="w-full text-white bg-primary-600 px-3 py-2 mt-4 rounded-lg focus:ring-4 focus:outline-none
                    dark:bg-green-600 dark:hover:bg-green-700 " 
                  onClick={""}
                 >
                  ADD
-                </button>
+                </button> */}
                </div>
     
       </div>

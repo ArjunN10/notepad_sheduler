@@ -5,25 +5,29 @@ import axios from 'axios'
 
 export const NoteCard = () => {
 
+  
     const createHandler=async(event)=>{
-
+        event.preventDefault()
         const noteheader =event.target.noteheader.value
-        const notebody=event.target.password.value
-        const value={noteheader,noteheader}
+        const notebody=event.target.notebody.value
         try {
-       
-          const response=await axios.post("http://localhost:3003/",value)
-          if(response){
-            toast.success("User registerd Successfully")
-            // navigate('/home')
+          const value={noteheader:noteheader,notebody:notebody}
+          const response=await axios.post("http://localhost:3003/api/notes/createnote",value)
+          if(response.status===200){
+            toast.success("Notes Added")
           }
           
         } catch (error) {
           console.log(error)
         }
       }
+
+
+
+
   return (
     <div>
+      <form onSubmit={createHandler}>
       <div className="max-w-sm w-96 p-6 mt-14 bg-white border border-gray-200 rounded-lg shadow
        dark:bg-gray-800 dark:border-gray-700">
         <label className=" flex text-white ms-24">
@@ -56,13 +60,14 @@ export const NoteCard = () => {
                   type="submit"
                   className="w-full text-white bg-primary-600 px-3 py-2 mt-4 rounded-lg focus:ring-4 focus:outline-none
                    dark:bg-green-600 dark:hover:bg-green-700 " 
-                 onClick={""}
+                //  onClick={""}
                 >
                  ADD
                 </button>
                </div>
     
       </div>
+      </form>
     </div>
   );
 };

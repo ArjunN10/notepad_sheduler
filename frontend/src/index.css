@@ -2,3 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    padding: 0;
+    margin: 0;
+    /* background-color: aquamarine; */
+}
+
+
+
+/* card styles */
+.card {
+    @apply 
+      bg-white 
+      shadow-sm 
+      rounded-md 
+      py-3 px-4 my-4 
+      relative 
+      overflow-hidden;
+  }
+  .card h3 {
+    @apply 
+      font-bold text-gray-700 text-sm 
+      mb-0;
+  }
+  .card p {
+    @apply my-4 text-sm leading-6;
+  }
+
+
+
+  
